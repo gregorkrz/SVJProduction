@@ -219,7 +219,9 @@ if hasattr(process,"mixData"):
     elif options.year=="2018": puname = "Neutrino_E-10_gun_RunIISummer20ULPrePremix-UL18_106X_upgrade2018_realistic_v11_L1v1-v2_PREMIX.pkl"
     if not os.path.isfile(puname):
         print "retrieving "+puname
-        os.system("xrdcp -f root://cmseos.fnal.gov//store/user/pedrok/SVJ2017/pileup/"+puname+" .")
+        #not available on disk anymore
+        #os.system("xrdcp -f root://cmseos.fnal.gov//store/user/pedrok/SVJ2017/pileup/"+puname+" .")
+        os.system("xrdcp -f root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/user/cazzanig/SVJ_production/pu_files_on_disk/"+puname+" .")
         if not os.path.isfile(puname):
             raise Exception("Could not retrieve pileup input list.")
     import cPickle as pickle
