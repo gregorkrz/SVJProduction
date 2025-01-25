@@ -1,17 +1,11 @@
-flist = [
-    {"channel": "s", "mMediator": 1100, "mDark": 20, "rinv": 0.3, "alpha": "peak", "scout": True},
-]
-
-
-'''
 flist = []
 
-mPseudo = 8.0
-mVector = 15
-for MZp in [3000]:
-        for rinv in [0.3]:
-          for brgamma in [0.3]:       
-            for mPiOverLambda in [1.0]:     
-                 for lambdaHV in [2.0]: 
-                        flist.append({"channel": "s", "svjgamma": 1 , "mMediator": MZp, "mPseudo": mPseudo,"mVector": mVector,"rinv": rinv, "alpha": "peak", "lambdaHV": lambdaHV, "mPiOverLambda": mPiOverLambda, "BRGamma": brgamma })
-'''
+#flist.append({"channel": "s", "mMediator": 700, "mDark": 20, "rinv": 0.5, "alpha": "peak", "scout": True})
+#flist.append({"channel": "s", "mMediator": 700, "mDark": 20, "rinv": 0.7, "alpha": "peak", "scout": True})
+
+for mMed in [700,800,900,1000,1100,1200,1300,1400,1500]:
+    for rinv in [0.3,0.5,0.7]:
+        for mDark in [20]:
+            flist.append({"channel": "s", "mMediator": mMed, "mDark": mDark, "rinv": rinv, "alpha": "peak", "scout": True})
+
+
