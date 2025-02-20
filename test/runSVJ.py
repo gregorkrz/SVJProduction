@@ -78,7 +78,13 @@ if options.signal:
         # generator settings
         if hasattr(process,'generator'):
             process.generator.crossSection = cms.untracked.double(_helper.xsec)
-            process.generator.PythiaParameters.processParameters = cms.vstring(_helper.getPythiaSettings())
+            hadr = []
+            if not options.hadronization:
+                hadr = ['HadronLevel:all = off']
+                print("Setting hadronization off: HadronLevel:all = off !!")
+            else:
+                print("Hadronization is on")
+            process.generator.PythiaParameters.processParameters = cms.vstring(_helper.getPythiaSettings() + hadr)
             if hasattr(process.generator.PythiaParameters,"JetMatchingParameters"):
                 process.generator.PythiaParameters.JetMatchingParameters = cms.vstring(_helper.getJetMatchSettings())
             if options.suep:

@@ -6,6 +6,7 @@ import os
 
 options = VarParsing("analysis")
 options.register("signal", True, VarParsing.multiplicity.singleton, VarParsing.varType.bool)
+options.register("hadronization", True, VarParsing.multiplicity.singleton, VarParsing.varType.bool)
 options.register("scan", "", VarParsing.multiplicity.singleton, VarParsing.varType.string)
 options.register("fragment", "", VarParsing.multiplicity.singleton, VarParsing.varType.string)
 options.register("madgraph", False, VarParsing.multiplicity.singleton, VarParsing.varType.bool)
