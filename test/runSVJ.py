@@ -229,6 +229,7 @@ if hasattr(process,"mixData"):
         #os.system("xrdcp -f root://cmseos.fnal.gov//store/user/pedrok/SVJ2017/pileup/"+puname+" .")
         #os.system("xrdcp -f root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/user/cazzanig/SVJ_production/pu_files_on_disk/"+puname+" .")
         #os.system("xrdcp -f root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"+puname+" .")
+        os.system("xrdcp -f root://t3se01.psi.ch:1094/store/user/gkrzmanc/jetclustering/sim/" + puname + " .")
         # For now the filelist should be reproduced before running the job and stored in the file.
         if not os.path.isfile(puname):
             raise Exception("Could not retrieve pileup input list.")
