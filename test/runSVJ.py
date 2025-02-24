@@ -234,7 +234,9 @@ if hasattr(process,"mixData"):
         if not os.path.isfile(puname):
             raise Exception("Could not retrieve pileup input list.")
     import cPickle as pickle
-    process.mixData.input.fileNames = cms.untracked.vstring(*pickle.load(open(puname,"rb")))
+    str_arr = pickle.load(open(puname,"rb"))
+    str_arr = [x.encode("utf-8") for x in str_arr]
+    process.mixData.input.fileNames = cms.untracked.vstring(*str_arr)
 
 # miniAOD settings
 _pruned = ["prunedGenParticlesWithStatusOne","prunedGenParticles"]
