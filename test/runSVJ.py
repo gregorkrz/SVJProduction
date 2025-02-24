@@ -224,11 +224,12 @@ if hasattr(process,"mixData"):
     elif options.year=="2017": puname = "Neutrino_E-10_gun_RunIISummer20ULPrePremix-UL17_106X_mc2017_realistic_v6-v3_PREMIX.pkl"
     elif options.year=="2018": puname = "Neutrino_E-10_gun_RunIISummer20ULPrePremix-UL18_106X_upgrade2018_realistic_v11_L1v1-v2_PREMIX.pkl"
     if not os.path.isfile(puname):
-        print "retrieving "+puname+" from list in root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"
+        #print "retrieving "+puname+" from list in root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"
         #not available on disk anymore
         #os.system("xrdcp -f root://cmseos.fnal.gov//store/user/pedrok/SVJ2017/pileup/"+puname+" .")
         #os.system("xrdcp -f root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/user/cazzanig/SVJ_production/pu_files_on_disk/"+puname+" .")
-        os.system("xrdcp -f root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"+puname+" .")
+        #os.system("xrdcp -f root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"+puname+" .")
+        # For now the filelist should be reproduced before running the job and stored in the file.
         if not os.path.isfile(puname):
             raise Exception("Could not retrieve pileup input list.")
     import cPickle as pickle
