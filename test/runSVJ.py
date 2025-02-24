@@ -84,7 +84,7 @@ if options.signal:
                 print("Setting hadronization off: HadronLevel:all = off !!")
             else:
                 print("Hadronization is on")
-            process.generator.PythiaParameters.processParameters = cms.vstring(_helper.getPythiaSettings() + hadr)
+            process.generator.PythiaParameters.processParameters = cms.vstring(_helper.getPythiaSettings())
             if hasattr(process.generator.PythiaParameters,"JetMatchingParameters"):
                 process.generator.PythiaParameters.JetMatchingParameters = cms.vstring(_helper.getJetMatchSettings())
             if options.suep:
@@ -230,7 +230,7 @@ if hasattr(process,"mixData"):
         #os.system("xrdcp -f root://storage01.lcg.cscs.ch:1096//pnfs/lcg.cscs.ch/cms/trivcat/store/user/cazzanig/SVJ_production/pu_files_on_disk/"+puname+" .")
         #os.system("xrdcp -f root://cmsdcache-kit-disk.gridka.de:1094//store/user/mgaisdor/SVJProduction/pu_files_on_disk/"+puname+" .")
         os.system("xrdcp -f root://t3se01.psi.ch:1094/store/user/gkrzmanc/jetclustering/sim/" + puname + " .")
-        # For now the filelist should be reproduced before running the job and stored in the file.
+        # For now the filelist should be reproduced before running the job and stored in this file.
         if not os.path.isfile(puname):
             raise Exception("Could not retrieve pileup input list.")
     import cPickle as pickle
