@@ -169,8 +169,8 @@ process=convertToUnscheduled(process)
 # customisation of the process.
 
 # Automatic addition of the customisation function from PhysicsTools.PatAlgos.slimming.miniAOD_tools
-#from PhysicsTools.PatAlgos.slimming.miniAOD_tools import miniAOD_customizeAllMC
-from SVJ.Production.miniaod_customize import miniAOD_customizeAllMC
+from PhysicsTools.PatAlgos.slimming.miniAOD_tools import miniAOD_customizeAllMC
+#from SVJ.Production.miniaod_customize import miniAOD_customizeAllMC
 #call to customisation function miniAOD_customizeAllMC imported from PhysicsTools.PatAlgos.slimming.miniAOD_tools
 process = miniAOD_customizeAllMC(process)
 
