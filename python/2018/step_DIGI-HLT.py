@@ -36,7 +36,7 @@ process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring('file:step-1.root'),
     inputCommands = cms.untracked.vstring(
         'keep *', 
-        'drop *_genParticles_*_*', 
+        'keep *_genParticles_*_*',
         'drop *_genParticlesForJets_*_*', 
         'drop *_kt4GenJets_*_*', 
         'drop *_kt6GenJets_*_*', 
