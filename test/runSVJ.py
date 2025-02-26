@@ -241,7 +241,7 @@ if hasattr(process,"mixData"):
 # miniAOD settings
 _pruned = ["prunedGenParticlesWithStatusOne","prunedGenParticles"]
 # also keep the ones where isFinalPartonLevel is true
-_keeps = ["keep (4900001 <= abs(pdgId) <= 4900991 )", "keep (51 <= abs(pdgId) <= 53)", "keep isFinalPartonLevel()"]
+_keeps = ["keep (4900001 <= abs(pdgId) <= 4900991 )", "keep (51 <= abs(pdgId) <= 53)", "keep (51 <= abs(status) <= 55)"]
 if options.suep: 
     _keeps = ["keep 999998 <= abs(pdgId) <= 999999", "++keep  abs(pdgId) == 11 || abs(pdgId) == 13 || abs(pdgId) == 1 || abs(pdgId) == 211", "keep++ abs(pdgId) == 1" ]
     # keep dark pions, darkphotons 
