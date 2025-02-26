@@ -285,6 +285,7 @@ default_select = ['drop  *',
 #'keep (51 <= abs(pdgId) <= 53)',
 #'keep (51 <= abs(status) <= 55)'
 ]
+default_select = ['keep *'] # keep everything for debugging
 for _prod in _pruned:
     if hasattr(process,_prod):
         # keep HV & DM particles
