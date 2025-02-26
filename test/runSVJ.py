@@ -248,11 +248,48 @@ if options.suep:
     # higgs already kept
     # keep SM decay products, electrons, muons, pions, uubar
     # keep decays of uubar
+
+default_select = ['drop  *',
+'++keep abs(pdgId) == 11 || abs(pdgId) == 13 || abs(pdgId) == 15',
+'drop status == 2',
+'keep++ (400 < abs(pdgId) < 600) || (4000 < abs(pdgId) < 6000)',
+'s == 1',
+'keep+ (400 < abs(pdgId) < 600) || (4000 < abs(pdgId) < 6000)',
+'keep abs(pdgId) == 11 || abs(pdgId) == 13 || abs(pdgId) == 15',
+'keep abs(pdgId) == 12 || abs(pdgId) == 14 || abs(pdgId) == 16',
+'+keep pdgId == 22 && status == 1 && (pt > 10 || isPromptFinalState())',
+'+keep abs(pdgId) == 11 && status == 1 && (pt > 3 || isPromptFinalState())',
+'keep++ abs(pdgId) == 15',
+'drop pdgId == 21 && pt < 5',
+'drop status == 2 && abs(pdgId) == 21',
+'keep abs(pdgId) == 23 || abs(pdgId) == 24 || abs(pdgId) == 25 || abs(pdgId) == 6 || abs(pdgId) == 37 ',
+'keep abs(pdgId) == 310 && abs(eta) < 2.5 && pt > 1 ',
+'+keep abs(pdgId) == 13 && status == 1',
+'keep (4 <= abs(pdgId) <= 5)',
+'keep (1 <= abs(pdgId) <= 3 || pdgId = 21) & (status = 2 || status = 11 || status = 71 || status = 72) && pt>5',
+'keep abs(pdgId) == 323  && abs(eta) < 2.5 && pt > 1',
+'keep+ abs(pdgId) == 333',
+'keep+ abs(pdgId) == 9920443 || abs(pdgId) == 9042413 || abs(pdgId) == 9000443 || abs(pdgId) == 100541 || abs(pdgId) == 100543',
+'keep+ abs(pdgId) == 443 || abs(pdgId) == 100443 || abs(pdgId) == 10441 || abs(pdgId) == 20443 || abs(pdgId) == 445 || abs(pdgId) == 30443',
+'keep+ abs(pdgId) == 553 || abs(pdgId) == 100553 || abs(pdgId) == 200553 || abs(pdgId) == 10551 || abs(pdgId) == 20553 || abs(pdgId) == 555',
+'keep abs(pdgId) = 10411 || abs(pdgId) = 10421 || abs(pdgId) = 10413 || abs(pdgId) = 10423 || abs(pdgId) = 20413 || abs(pdgId) = 20423 || abs(pdgId) = 10431 || abs(pdgId) = 10433 || abs(pdgId) = 20433',
+'keep abs(pdgId) = 10511 || abs(pdgId) = 10521 || abs(pdgId) = 10513 || abs(pdgId) = 10523 || abs(pdgId) = 20513 || abs(pdgId) = 20523 || abs(pdgId) = 10531 || abs(pdgId) = 10533 || abs(pdgId) = 20533 || abs(pdgId) = 10541 || abs(pdgId) = 10543 || abs(pdgId) = 20543',
+'keep (1000001 <= abs(pdgId) <= 1000039 ) || ( 2000001 <= abs(pdgId) <= 2000015)',
+'keep (4900001 <= abs(pdgId) <= 4900991)',
+'keep (51 <= abs(pdgId) <= 53)',
+'keep pdgId = 2212',
+'keep status == 3 || ( 21 <= status <= 29) || (11 <= status <= 19)',
+'keep isHardProcess() || fromHardProcessFinalState() || fromHardProcessDecayed() || fromHardProcessBeforeFSR() || (statusFlags().fromHardProcess() && statusFlags().isLastCopy())',
+'keep (4900001 <= abs(pdgId) <= 4900991 )',
+'keep (51 <= abs(pdgId) <= 53)',
+'keep (51 <= abs(status) <= 55)']
+
 for _prod in _pruned:
     if hasattr(process,_prod):
         # keep HV & DM particles
+        getattr(process,_prod).select = cms.vstring(*default_select)
         getattr(process,_prod).select.extend(_keeps)
-        print(_prod + " select:" + str(getattr(process, _prod).select))
+        #print(_prod + " select:" + str(getattr(process, _prod).select))
 
 def add_outputs(output_list):
     if not isinstance(output_list,list): output_list = [output_list]
