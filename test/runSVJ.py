@@ -253,7 +253,7 @@ default_select = ['drop  *',
 '++keep abs(pdgId) == 11 || abs(pdgId) == 13 || abs(pdgId) == 15',
 'drop status == 2',
 'keep++ (400 < abs(pdgId) < 600) || (4000 < abs(pdgId) < 6000)',
-'s == 1',
+'drop status == 1',
 'keep+ (400 < abs(pdgId) < 600) || (4000 < abs(pdgId) < 6000)',
 'keep abs(pdgId) == 11 || abs(pdgId) == 13 || abs(pdgId) == 15',
 'keep abs(pdgId) == 12 || abs(pdgId) == 14 || abs(pdgId) == 16',
@@ -284,11 +284,11 @@ default_select = ['drop  *',
 #'keep (51 <= abs(pdgId) <= 53)',
 #'keep (51 <= abs(status) <= 55)'
 ]
-
 for _prod in _pruned:
     if hasattr(process,_prod):
         # keep HV & DM particles
-        getattr(process,_prod).select = cms.vstring(*default_select)
+        if _prod == "prunedGenParticles":
+            getattr(process,_prod).select = cms.vstring(*default_select)
         getattr(process,_prod).select.extend(_keeps)
         #print(_prod + " select:" + str(getattr(process, _prod).select))
 
