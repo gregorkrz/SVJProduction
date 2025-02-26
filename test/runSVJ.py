@@ -280,7 +280,7 @@ default_select = ['drop  *',
 'keep pdgId = 2212',
 'keep status == 3 || ( 21 <= status <= 29) || (11 <= status <= 19)',
 'keep isHardProcess() || fromHardProcessFinalState() || fromHardProcessDecayed() || fromHardProcessBeforeFSR() || (statusFlags().fromHardProcess() && statusFlags().isLastCopy())',
-#'keep (4900001 <= abs(pdgId) <= 4900991 )',
+#'keep (4900001 <= abs(pdgId) <= 4900991)',
 #'keep (51 <= abs(pdgId) <= 53)',
 #'keep (51 <= abs(status) <= 55)'
 ]
