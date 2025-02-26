@@ -252,6 +252,7 @@ for _prod in _pruned:
     if hasattr(process,_prod):
         # keep HV & DM particles
         getattr(process,_prod).select.extend(_keeps)
+        print(_prod + " select:" + str(getattr(process, _prod).select))
 
 def add_outputs(output_list):
     if not isinstance(output_list,list): output_list = [output_list]
